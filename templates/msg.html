@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% block head %}
+  
+<style>
+  .font-bold {
+    font-family: 'Roboto', sans-serif;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+  }
+  
+  .font-n {
+    font-size: 20px;
+    color: black;
+
+    
+  }
+
+</style>
+{% endblock head %}
+{% block body %}
+  
+
+  <!-- informaton of msg  -->
+  <div class="container" style="height: 135vh;">
+  <div class="container border bg-light mt-4 p-3 rounded d-flex">
+        <div class="container d-flex pl-1">
+        <ul type="none">
+          <li class="font-bold">Name</li>
+          <li class="font-bold">From</li>
+          <li class="font-bold">Subject</li>
+          <li class="font-bold">Received</li>
+        </ul>
+
+        <ul type="none">
+          <li class="font-n">{{inbox.senderName}}</li>
+          <li class="font-n">{{inbox.sender}}</li>
+          <li class="font-n">{{inbox.subject}}</li>
+          <li class="font-n">{{inbox.date}}</li>
+        </ul>
+        
+      </div>
+      <div class="wrapper-attachments p-xy-20 w-100 ff-futura-demi" style="text-align: right;">
+        <div style="float:right">
+
+          <a class="btn-delete d-flex align-items-center text-decoration-none" 
+            style="cursor: pointer;width: 110px;" href="/delete/{{inbox.no}}">
+            <img src="{{url_for('static',filename='/images/delete.png')}}" >
+            Delete
+          </a>
+          <a class="btn-delete d-flex align-items-center mt-2 text-decoration-none" 
+            style="cursor: pointer;width: 110px;" href="">
+            <img src="{{url_for('static',filename='/images/star.png')}}" >
+            Stared
+          </a>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- content of msg  -->
+    <div class="container mt-4 border bg-light p-0 " style="height: 500px;">
+
+      <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home"
+            type="button" role="tab" aria-controls="nav-home" aria-selected="true">CONTENT</button>
+          <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button"
+            role="tab" aria-controls="nav-profile" aria-selected="false">ATTACHMENTS</button>
+        </div>
+      </nav>
+      <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active mt-5" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"
+          tabindex="0">
+          <iframe class=""srcdoc="{{inbox.content}}"height="500" width="100%" frameborder="0"></iframe>
+        </div>
+        <div class="tab-pane fade  mt-5"id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0" style="height: 50vh;">
+         <div class="d-flex justify-content-center">
+          <ul type="none">
+            <li class="font-bold">filename</li>
+            <li class="font-bold">Filesize</li>
+            <li class="font-bold">file</li>
+            <li></li>
+          </ul>
+          <ul type="none">
+            <li class="font-n">{{inbox.fileName}}</li>
+            <li class="font-n">none</li>
+            <li class="font-n">dss</li>
+
+          </ul>
+         </div>
+         
+         <div class="mt-5 d-flex justify-content-center">
+          <button class="btn-dark"><a href="/download/{{inbox.no}}" style="color:white;text-decoration: none;">Download</a> </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+  {% endblock body %}
