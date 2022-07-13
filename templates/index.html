@@ -9,44 +9,37 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <link rel="stylesheet" href="{{url_for('static',filename='boot-5/style.css')}}">
+  <link rel="stylesheet" href="{{url_for('static',filename='boot-5/css/bootstrap.min.css')}}">
 </head>
 
 <body>
 
-  <div class=" d-flex">
-    <nav id="sidebar">
-      <div class="p-4 pt-5">
-        <ul class="list-unstyled components mb-5">
-          <li class="active">
-            <a href="/" data-toggle="collapse" aria-expanded="false">Home</a>
-            <ul class="collapse list-unstyled" id="homeSubmenu">
-            </ul>
-          </li>
-          <li>
-            <a href="#">Contact</a>
-          </li>
+  <div class="offcanvas offcanvas-start" style="width:20%;" tabindex="-1" id="offcanvas" data-bs-keyboard="false" data-bs-backdrop="false">
+    <div class="offcanvas-header">
+        <h6 class="offcanvas-title d-none d-sm-block" id="offcanvas">Menu</h6>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body px-0">
+        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-start" id="menu">
+            <li class="nav-item">
+                <a href="/" class="nav-link text-truncate">
+                    <i class="fs-5 bi-house"></i><span class="ms-1 d-none d-sm-inline">Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="#submenu1" data-bs-toggle="collapse" class="nav-link text-truncate">
+                    <i class="fs-5 bi-speedometer2"></i><span class="ms-1 d-none d-sm-inline">Contact</span> </a>
+            </li>
         </ul>
-
-        <div class="footer">
-          <p>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            Copyright &copy;
-            <script>document.write(new Date().getFullYear());</script> All rights reserved | Design in 2021-22<i
-              class="icon-heart" aria-hidden="true"></i> by Ankur badge
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-          </p>
-        </div>
-
-      </div>
-    </nav>
-
+    </div>
+  </div>
     <!-- Nav bar Content  -->
     <div id="content" class="p-4 p-md-5">
 
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
 
-          <button type="button" id="sidebarCollapse" class="btn btn-primary">
+          <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" id="sidebarCollapse" class="btn btn-primary">
             <i class="fa fa-bars"></i>
             <span class="sr-only">Toggle Menu</span>
           </button>
@@ -110,7 +103,7 @@
 
     </div>
   </div>
-</div>
+
     <script src="{{ url_for('static', filename='boot-5/jquery.min.js') }}"></script>
     <script src="{{ url_for('static', filename='boot-5/popper.js') }}"></script>
     <script src="{{ url_for('static', filename='boot-5/js/bootstrap.min.js') }}"></script>
